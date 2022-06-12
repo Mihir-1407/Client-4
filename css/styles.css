@@ -1,0 +1,235 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: auto;
+    background-image: radial-gradient(circle at center center, transparent, rgb(255, 255, 255)), linear-gradient(309deg, rgba(90, 90, 90, 0.05) 0%, rgba(90, 90, 90, 0.05) 50%, rgba(206, 206, 206, 0.05) 50%, rgba(206, 206, 206, 0.05) 100%), linear-gradient(39deg, rgba(13, 13, 13, 0.05) 0%, rgba(13, 13, 13, 0.05) 50%, rgba(189, 189, 189, 0.05) 50%, rgba(189, 189, 189, 0.05) 100%), linear-gradient(144deg, rgba(249, 249, 249, 0.05) 0%, rgba(249, 249, 249, 0.05) 50%, rgba(111, 111, 111, 0.05) 50%, rgba(111, 111, 111, 0.05) 100%), linear-gradient(166deg, rgba(231, 231, 231, 0.05) 0%, rgba(231, 231, 231, 0.05) 50%, rgba(220, 220, 220, 0.05) 50%, rgba(220, 220, 220, 0.05) 100%), linear-gradient(212deg, rgba(80, 80, 80, 0.05) 0%, rgba(80, 80, 80, 0.05) 50%, rgba(243, 243, 243, 0.05) 50%, rgba(243, 243, 243, 0.05) 100%), radial-gradient(circle at center center, hsl(107, 19%, 100%), hsl(107, 19%, 100%));
+}
+
+div.header {
+    height: 50px;
+    margin: auto;
+    margin-top: 10px;
+    width: 40%;
+    padding: 10px;
+    text-align: center;
+    background-color: #571581;
+    color: aliceblue;
+    border-radius: 10px;
+}
+
+div.form {
+    width: 30%;
+    padding: 2rem;
+    margin: auto;
+    text-align: center;
+}
+
+div form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    grid-gap: 1rem;
+}
+
+
+input {
+    width: 100%;
+    border: none;
+    background-color: #E8F9FD;
+    border: 1px solid black;
+    border-left: 2px solid blue;
+    border-radius: 2px;
+    height: 24px;
+    padding: 2px 4px;
+}
+
+input:focus {
+    outline: none;
+    border-left: 2px rgb(0, 234, 255) solid;
+}
+
+input.button {
+    width: 65px;
+    background-color: #571581;
+    color: aliceblue;
+    border-radius: 8px;
+    padding: 0 2px;
+}
+
+input.button:hover {
+    background-color: transparent;
+    color: #571581;
+    font-weight: 700;
+}
+
+div.head_admin {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 60px;
+    background-color: #571581;
+    color: aliceblue;
+    padding: 0 0.002rem;
+}
+
+div.navigation {
+    color: aliceblue;
+    right: 20px;
+}
+
+div.navigation a {
+    color: rgb(189, 178, 178);
+
+}
+
+div.navigation a:hover {
+    color: #DBDFFD;
+}
+
+
+
+
+.login .form h1 {
+    margin: 2rem;
+}
+
+.login form {
+    grid-template-columns: 1fr 3fr;
+    grid-gap: 2rem;
+    justify-content: flex-end;
+}
+
+.adminhome .addnew {
+    margin-top: 5%;
+    display: flex;
+    justify-items: center;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+.company img {
+    height: 50px;
+    width: 50px;
+}
+
+h1 {
+    margin: 0 1rem;
+}
+
+h2 {
+    text-align: center;
+    margin: 1.5rem;
+}
+
+h4 {
+    text-align: center;
+    margin: 1rem;
+    color: red;
+}
+
+
+table button {
+    padding: 3px;
+    background-color: #571581;
+    border: none;
+    margin: 1px;
+}
+
+table button:hover a {
+    color: yellow;
+}
+
+button a {
+    color: aliceblue;
+    text-decoration: none;
+}
+
+
+.header .logo-bottom {
+    width: 50px;
+    height: 50px;
+}
+
+.dropbtn {
+    background-color: #2E0249;
+    color: aliceblue;
+    padding: 2px 4px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #2E0249;
+    min-width: 60px;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 5px 5px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #726c6c00
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #2E0249;
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: 2rem;
+    background-color: #571581;
+    padding: 1.2rem 0;
+    text-align: center;
+    border-top: 1px solid white;
+}
+
+footer p {
+    color: white;
+    margin-bottom: 1rem;
+}
+
+footer a {
+    display: inline-block;
+    font-weight: 700;
+    color: black;
+    background-color: white;
+    padding: 3px;
+    width: fit-content;
+    border-radius: 5px;
+}
+
+footer p a:hover {
+    color: #42caff;
+    font-weight: 900;
+}
+
+.logo-bottom {
+    height: 30px;
+    width: 30px;
+    vertical-align: middle;
+    border: 0.2px solid black;
+    border-radius: 50%;
+    margin-right: 2px;
+}
