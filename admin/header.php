@@ -1,8 +1,9 @@
 <?php
+    session_start();
     include '../company.php';
     include '../config.php';
 
-    session_start();
+ 
 
     $id = $_SESSION['id'];
 

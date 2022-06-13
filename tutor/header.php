@@ -1,7 +1,8 @@
 <?php
+session_start();
 include '../company.php';
 include '../config.php';
-    session_start();
+   
     $id = $_SESSION["id"];
     if(!isset($_SESSION["id"]) OR $_SESSION["id"] == "Admin"){
         header("Location: {$hostname}/index.php");

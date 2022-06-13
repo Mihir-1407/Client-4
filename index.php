@@ -1,5 +1,4 @@
-<?php 
-include 'header.php';
+<?php
 session_start();
 if(isset($_SESSION["id"])){
     if($_SESSION["id"] == "Admin"){
@@ -9,6 +8,7 @@ if(isset($_SESSION["id"])){
     }
 }
 
+include 'config.php';
 if(isset($_POST['submit'])){
     
     $id = $_POST['id'];
@@ -31,14 +31,12 @@ if(isset($_POST['submit'])){
     $resultT = $sqlT -> get_result();
 
     if(mysqli_num_rows($resultA) > 0){
-        session_start();
         while($row = $resultA -> fetch_assoc()){
             $_SESSION["id"] = $row['admin_id'];
         }
         header("Location: ./admin/admin.php?id=" . $id);
     
     }else if(mysqli_num_rows($resultT) > 0){
-        session_start();
         while($row = $resultT -> fetch_assoc()){
             $_SESSION["id"] = $row['tutor_id'];
         }
@@ -54,7 +52,7 @@ if(isset($_POST['submit'])){
 ?>
 
 <?php
-include 'company.php';
+include 'header.php';
 
 ?>
 <div class="login">
