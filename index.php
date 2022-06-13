@@ -46,7 +46,6 @@ if(isset($_POST['submit'])){
     
     }else{
         echo "<h1 class=''>Invalid ID / Password </h1>";
-        header("Location: ../index.php");
     }
 
     $sqlT -> close();
