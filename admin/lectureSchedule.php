@@ -93,10 +93,10 @@ use PHPMailer\PHPMailer\PHPMailer;
 
 
 
-        $to= '19.ecmihirhemnani@gmail.com';
+        $to= 'gandhimihir0909@gmail.com';
         $subject = 'the subject';
         $message = 'hello';
-        $headers = 'From: mihir.hemnani99@gmail.com' . "\r\n" .
+        $headers = 'From: mjg2762@gmail@gmail.com' . "\r\n" .
             'Reply-To: webmaster@example.com' . "\r\n" .
             'X-Mailer: PHP/' . phpversion();
 
@@ -105,44 +105,6 @@ use PHPMailer\PHPMailer\PHPMailer;
         if(!$result){
             echo "<script>alert('Failed')</script>";
         }
-
-
-
-
-
-    //     require_once 'PHPMailer.php';
-    //     require_once 'SMTP.php';
-    //     require_once 'Exception.php';
-
-    //     $mail = new PHPMailer();
-    //     $mail -> isSMTP();
-    //     $mail -> Host = "smtp.gmail.com";
-    //     $mail -> SMTPAuth = true;
-    //     $mail -> Username = "mihir.hemnani99@gmail.com";        ;
-    //     $mail -> Password = "200320018928";
-    //     $mail -> Port = 587;
-    //     $mail -> SMTPSecure = "tls";
-
-    //     // emial setting
-    //     $mail -> isHTML(true);
-    //     $mail -> setFrom($from);
-    //     $mail -> addAddress($to);
-    //     $mail -> Subject = $subject;
-    //     $mail -> Body = $message;
-
-    //     // error_reporting(-1);
-    //     // ini_set('display_errors', 'On');
-    //     // set_error_handler("var_dump");
-
-    //     if($mail -> send()){
-    //         $status = "success";
-    //         $response = "Email is sent";
-    //         echo "<script>alert('Email Sent to TUT{tutor_id}')</script>";
-    //     }else{
-    //         $status = "failed";
-    //         $response = "Something is wrong<br>" . $mail -> ErrorInfo;
-    //         echo "<script>alert('Failed')</script>";
-    //     }
 
     }
 

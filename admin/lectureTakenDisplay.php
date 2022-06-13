@@ -173,7 +173,7 @@
             } 
             $sqlS -> close();
             }else{
-                echo "<h1>No Records</h1>";
+                echo "<h4>No Records Found.</h4>";
             } 
             ?>
 
