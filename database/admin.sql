@@ -19,7 +19,7 @@
 -- Table structure for table `admin`
 --
 
-DROP TABLE IF EXISTS `admin`;
+-- DROP TABLE IF EXISTS `admin`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `admin` (
@@ -27,7 +27,7 @@ CREATE TABLE `admin` (
   `admin_name` varchar(30) NOT NULL,
   `passwordA` varchar(50) NOT NULL,
   PRIMARY KEY (`admin_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

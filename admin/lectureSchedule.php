@@ -151,7 +151,8 @@ use PHPMailer\PHPMailer\PHPMailer;
 ?>
 
 <section>
-    <div class="form">
+    <h2>Schedule Lecture</h2>
+    <div class="form">  
         <form action="<?php $_SERVER["PHP_SELF"]?>" class="a_form" method="post" autocomplete="off">
             <?php
                 $sqlL = $conn -> prepare("SELECT lec_id FROM lecture_entry ORDER BY lec_id DESC LIMIT 1");

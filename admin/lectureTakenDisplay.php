@@ -83,7 +83,7 @@
             } 
             $sqlS -> close();
             }else{
-                echo "<h1>No Records</h1>";
+                echo "<h4>No Records Found.</h4>";
             } 
             ?>
 
@@ -100,7 +100,7 @@
 
 <div>
 
-    <h2>Lectures To be Conduct</h2><br>
+    <h2>Pending Lectures</h2><br>
 
 
     <table style="width:100%; text-align:center;">

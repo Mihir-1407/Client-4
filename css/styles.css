@@ -30,7 +30,7 @@ div.form {
 div form {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    justify-items: center;
+    justify-items: end;
     grid-gap: 1rem;
 }
 

@@ -119,7 +119,7 @@
                     echo '<input type="submit" class="button" name="form">';
                 }
                 else{
-                    echo '<input type="submit" class="button" name="form" disabled>';
+                    echo '<input type="submit" class="button" name="form" style="opacity:0.5;" disabled>';
                 }
             ?>
         </form>

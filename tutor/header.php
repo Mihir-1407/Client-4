@@ -5,7 +5,7 @@ include '../config.php';
    
     $id = $_SESSION["id"];
     if(!isset($_SESSION["id"]) OR $_SESSION["id"] == "Admin"){
-        header("Location: {$hostname}/index.php");
+        header("Location: index.php");
     }
 ?>
 
@@ -24,8 +24,10 @@ include '../config.php';
     <header>
         <div class="head_admin">
             <div class="company">
-                <?php echo $company_name?> <br>
+                <h1>
                 <?php echo $company_logo?>
+                <?php echo $company_name?>
+                </h1>
             </div>
             <div class="navigation">
                 <?php

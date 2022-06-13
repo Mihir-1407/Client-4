@@ -19,7 +19,7 @@
 -- Table structure for table `lecture_entry`
 --
 
-DROP TABLE IF EXISTS `lecture_entry`;
+-- DROP TABLE IF EXISTS `lecture_entry`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lecture_entry` (
@@ -34,7 +34,7 @@ CREATE TABLE `lecture_entry` (
   `payment` tinyint NOT NULL DEFAULT '0',
   `etime` time NOT NULL DEFAULT '07:27:00',
   PRIMARY KEY (`lec_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
