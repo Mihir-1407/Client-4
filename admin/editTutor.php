@@ -50,7 +50,7 @@
             $sqlT -> execute();
 
             if($sqlS -> affected_rows > 0){
-                echo "<script>alert('Updated TUT{$id}')</script>";
+                echo "<script>alert('Updated TUT$id')</script>";
                 header("Refresh:1");
             }else{
                 echo "<script>alert('Error')</script>";

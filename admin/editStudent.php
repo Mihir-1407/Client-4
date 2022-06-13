@@ -43,10 +43,10 @@
             $sqlS -> execute();
 
             if($sqlS -> affected_rows > 0){
-                echo "<script>alert('Updated STU{$id}')</script>";
+                echo "<script>alert('Updated STU$id')</script>";
                 header("Refresh:1");
             }else{
-                echo "<script>alert('Error')</script>";
+                echo "<script>alert('No Change')</script>";
             }
             
 

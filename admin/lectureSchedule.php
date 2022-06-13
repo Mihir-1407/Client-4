@@ -1,8 +1,5 @@
 <?php
 
-use LDAP\Result;
-use PHPMailer\PHPMailer\PHPMailer;
-
     include "header.php";
     include '../config.php';
 
@@ -42,11 +39,12 @@ use PHPMailer\PHPMailer\PHPMailer;
 
         $conducted = 0;
         $payment = 0;
-
+        $submitted = 0;
     
-        $sqlL = $conn -> prepare("INSERT INTO lecture_entry VALUES(?,?,?,?,?,?,?,?,?,?)");
-        $sqlL -> bind_param('ssssssssss', $lec_id, $tutor_id, $stu_id, $subject, $sdate, $stime, $etime, $duration, $conducted, $payment);
+        $sqlL = $conn -> prepare("INSERT INTO lecture_entry VALUES(?,?,?,?,?,?,?,?,?,?,?)");
+        $sqlL -> bind_param('sssssssssss', $lec_id, $tutor_id, $stu_id, $subject, $sdate, $stime, $etime, $duration, $conducted, $payment, $submitted);
         $sqlL -> execute();
+
         
         if($sqlL -> affected_rows > 0){
             echo '<script>alert("Lecture Scheduled")</script>';
@@ -57,8 +55,6 @@ use PHPMailer\PHPMailer\PHPMailer;
         $sqlL -> close();
 
 
-
-
         // email to Tutor for Lecture Scheduled
         $sql = $conn -> prepare("SELECT * FROM tutor WHERE tutor_id = ?");
         $sql -> bind_param("s", $tutor_id);
@@ -67,41 +63,47 @@ use PHPMailer\PHPMailer\PHPMailer;
         while($row = $result -> fetch_assoc()){
             $to = $row['email'];
         }
-
-
-        // admin email address
-        // $from = "mihir.hemnani99@gmail.com";
-        // $subject = "Test Mail";
-        // $message = "Payment Pathway. Pay the Fees";
-        // $header = "From: mihir.hemnani99@gmail.com\r\n";
-        // $header.= "MIME-Version: 1.0\r\n";
-        // $header.= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-        // $header.= "X-Priority: 1\r\n";
-        
-        // if(mail($to, $subject, $message, $headers)){
-        //     echo "<script>alert('Email Sent to TUT{tutor_id}')</script>";
-        // }
-        // else{
-        //     echo "<script>alert('Failed')</script>";
-        // }
-
-        // echo "<script>alert('{$from} : {$to}')</script>";
+        $fromEmail = "mihir.hemnani99@gmail.com";
         
 
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+        $headers .= 'From: '.$fromEmail.'<'.$fromEmail.'>' . "\r\n".'Reply-To: '.$fromEmail."\r\n" . 'X-Mailer: PHP/' . phpversion();
 
-
-
-
-
-        $to= 'gandhimihir0909@gmail.com';
-        $subject = 'the subject';
-        $message = 'hello';
-        $headers = 'From: mjg2762@gmail@gmail.com' . "\r\n" .
-            'Reply-To: webmaster@example.com' . "\r\n" .
-            'X-Mailer: PHP/' . phpversion();
-
+        $subject = 'AnyDay Tutors';
+        $message = '<html> 
+                        <head> 
+                        </head> 
+                        <body> 
+                            <h1>Lecture Schedule</h1> 
+                            <table cellspacing="0" style="border: 2px dashed #FB4314; width: 100%;"> 
+                                <tr> 
+                                <th>Lecture ID : </th><td>' . $lec_id . '</td> 
+                                </tr>
+                                <tr> 
+                                    <th>Tutor ID : </th><td>TUT' . $tutor_id . '</td> 
+                                </tr> 
+                                <tr> 
+                                    <th>Student ID : </th><td>STU' . $stu_id . '</td> 
+                                </tr> 
+                                <tr> 
+                                    <th>Date : </th><td>' . date("d-m-Y", strtotime($sdate)) . '</td> 
+                                </tr>
+                                <tr> 
+                                    <th>Time : </th><td>' . date('h:i A', strtotime($stime)) . '</td> 
+                                </tr>
+                                <tr> 
+                                    <th>Duration : </th><td>' . $duration . ' hour</td> 
+                                </tr>
+                                <tr> 
+                                    <th>Duration : </th><td>' . $subject . '</td> 
+                                </tr>
+                            </table> 
+                        </body> 
+                    </html>';
+        
         $result = mail($to, $subject, $message, $headers);
-            echo "<script>alert('Email Sent to TUT{tutor_id}')</script>";
+            echo "<script>alert('Email Sent to TUT$tutor_id')</script>";
         if(!$result){
             echo "<script>alert('Failed')</script>";
         }
@@ -141,7 +143,7 @@ use PHPMailer\PHPMailer\PHPMailer;
             <label for="Time">Scheduled Time</label>
             <input type="time" name="stime" id="stime" placeholder="" required>
             <label for="Time">Duration</label>
-            <input type="number" step="0.5" name="duration" id="duration" placeholder="Time in hours" min="0" required>
+            <input type="number" step="0.5" name="duration" id="duration" placeholder="Time in hours" min="0.5" required>
             <br>
             <input type="submit" class="button" name="schedule">
             <?php
@@ -151,3 +153,6 @@ use PHPMailer\PHPMailer\PHPMailer;
     </div>
 </section>
 
+<?php
+    include "../footer.php";
+?>

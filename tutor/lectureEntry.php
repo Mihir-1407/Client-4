@@ -3,35 +3,37 @@
     
     $lec_id = $_GET['id'];
 
-    $sqlL = $conn -> prepare("SELECT * FROM lecture_entry WHERE lec_id = ?");
-    $sqlL -> bind_param("s", $lec_id);
-    $sqlL -> execute();
-    $resultL = $sqlL -> get_result() -> fetch_all(MYSQLI_ASSOC);
+    // $sqlL = $conn -> prepare("SELECT lec_id FROM lecture_entry WHERE lec_id = ?");
+    // $sqlL -> bind_param("s", $lec_id);
+    // $sqlL -> execute();
+    // $resultL = $sqlL -> get_result() -> fetch_all(MYSQLI_ASSOC);
 
-    if($resultL[0]['conducted'] == 1){
-        header("Location: scheduledLecture.php?id=TUT" . $_SESSION['id']);
-    }
+    // if($resultL[0]['conducted'] == 1){
+    //     header("Location: scheduledLecture.php?id=TUT" . $_SESSION['id']);
+    // }
 
     if(isset($_POST['form'])){
 
-        // $sqlL = $conn -> prepare("SELECT * FROM lecture_entry WHERE lec_id = ?");
-        // $sqlL -> bind_param("s", $lec_id);
-        // $sqlL -> execute();
-        // $resultS = $sqlL -> get_result();
 
         if(isset($_POST['conducted'])){
-            $conducted = 1;
+            $conducted = true;
             $sqlC = $conn -> prepare("UPDATE lecture_entry SET conducted = ? WHERE lec_id = ?");
             $sqlC -> bind_param("ss", $conducted, $lec_id);
             $sqlC -> execute();
             $resultC = $sqlC -> get_result();
         }
 
+        $submitted = 1;
+        $sqlE = $conn -> prepare("UPDATE lecture_entry SET submitted = ? WHERE lec_id = ?");
+        $sqlE -> bind_param("ss", $submitted, $lec_id);
+        $sqlE -> execute();
+        $resultE = $sqlE -> get_result();
 
         $temp = $_POST['Tutor_ID'];
         $len = strlen($temp);
         $temp = substr($temp, 3, $len - 3);
         $tu_id = intval($temp);
+
 
         $temp = $_POST['Std_id'];
         $len = strlen($temp);
@@ -39,7 +41,6 @@
         $stu_id = intval($temp);
 
         
-
         $subjectTeached = $_POST['Subject'];
         $duration = $_POST['Time'];
         $payment = 0;
@@ -54,6 +55,7 @@
             $to = $rowS['stu_email'];
         }
 
+
         $sql = $conn -> prepare("SELECT * FROM tutor WHERE tutor_id = ?");
         $sql -> bind_param("s", $tu_id);
         $sql -> execute();
@@ -62,26 +64,69 @@
             $from = $row['email'];
         }
 
+        
+        $sqlL = $conn -> prepare("SELECT * FROM lecture_entry WHERE lec_id = ?");
+        $sqlL -> bind_param("s", $lec_id);
+        $sqlL -> execute();
+        $resultL = $sqlL -> get_result() -> fetch_all(MYSQLI_ASSOC);
+        if(count($resultL) > 0){
 
-        $subject = "Test Mail";
-        $message = "Payment Pathway. Pay the Fees";
-        $headers = "From: " . $from;
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+        $headers .= 'From: '.$from.'<'.$from.'>' . "\r\n".'Reply-To: '.$from."\r\n" . 'X-Mailer: PHP/' . phpversion();
 
+        $subject = 'AnyDay Tutors';
+        $message = '<html> 
+                        <head> 
+                        </head> 
+                        <body> 
+                            <h1>Lecture Details</h1> 
+                            <table cellspacing="0" style="border: 2px dashed #FB4314; width: 100%;"> 
+                                <tr> 
+                                <th>Lecture ID : </th><td>' . $resultL[0]['lec_id'] . '</td> 
+                                </tr>
+                                <tr> 
+                                    <th>Tutor ID : </th><td>TUT' . $resultL[0]['tutor_id'] . '</td> 
+                                </tr> 
+                                <tr> 
+                                    <th>Student ID : </th><td>STU' . $resultL[0]['stu_id'] . '</td> 
+                                </tr> 
+                                <tr> 
+                                    <th>Duration : </th><td>' . $resultL[0]['subject'] . '</td> 
+                                </tr>
+                                <tr> 
+                                    <th>Date : </th><td>' . date("d-m-Y", strtotime($resultL[0]['sdate'])) . '</td> 
+                                </tr>
+                                <tr> 
+                                    <th>Time : </th><td>' . date('h:i A', strtotime($resultL[0]['stime'])) . ' to ' . date('h:i A', strtotime($resultL[0]
+                                    ['etime'])) .  '</td> 
+                                </tr>
+                                <tr> 
+                                    <th>Duration : </th><td>' . $resultL[0]['duration'] . ' Hour</td> 
+                                </tr>
+                            </table> 
+                            <button><a  href="https://thewizards.me/">Payment Link<a></button>
+                        </body> 
+                    </html>';
+        }
+
+        
 
         if(mysqli_num_rows($result) > 0 && mysqli_num_rows($resultS) > 0){
             if(mail($to, $subject, $message, $headers)){
-                echo "<script>alert('Form Submitted / Email Sent')</script>";
+                echo "<script>alert('Form Submitted')</script>";
             }
             else{
-                echo "<script>alert('Error')</script>";
+                echo "<script>alert('Form Not Submitted')</script>";
             }
         }else{
             echo "<script>alert('Error')</script>";
 
         }
-
-        header("Location: scheduledLecture.php?id=TUT" . $_SESSION['id']);
+        $sqlL -> close();
+        // header("Location: scheduledLecture.php?id=TUT" . $_SESSION['id']);
     }
+    
 
 ?>
 
@@ -90,7 +135,7 @@
         <form action="<?php $_SERVER['PHP_SELF']?>" class="a_form" method="post" autocomplete="off">
         <?php
             $conducted = false;
-
+                
             $sqlL = $conn -> prepare("SELECT * FROM lecture_entry WHERE lec_id = ? AND conducted = ?");
             $sqlL -> bind_param("ss", $lec_id , $conducted);
             $sqlL -> execute();
@@ -112,20 +157,11 @@
             <label for="Conducted">Conducted</label>
             <input type="checkbox" name="conducted" id="conducted" placeholder="" >
             <br>
-            <?php 
-                date_default_timezone_set("Asia/Kolkata");
-                $check_time = date("h:i:s");
-                if($row['etime'] < $check_time){
-                    echo '<input type="submit" class="button" name="form">';
-                }
-                else{
-                    echo '<input type="submit" class="button" name="form" style="opacity:0.5;" disabled>';
-                }
-            ?>
+            <input type="submit" class="button" name="form">
         </form>
         <?php 
         }
-        $sqlL -> close(); 
+        $sqlL -> close();
         ?>  
     </div>
 </section>
