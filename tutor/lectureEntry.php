@@ -3,15 +3,6 @@
     
     $lec_id = $_GET['id'];
 
-    // $sqlL = $conn -> prepare("SELECT lec_id FROM lecture_entry WHERE lec_id = ?");
-    // $sqlL -> bind_param("s", $lec_id);
-    // $sqlL -> execute();
-    // $resultL = $sqlL -> get_result() -> fetch_all(MYSQLI_ASSOC);
-
-    // if($resultL[0]['conducted'] == 1){
-    //     header("Location: scheduledLecture.php?id=TUT" . $_SESSION['id']);
-    // }
-
     if(isset($_POST['form'])){
 
 
@@ -92,20 +83,19 @@
                                     <th>Student ID : </th><td>STU' . $resultL[0]['stu_id'] . '</td> 
                                 </tr> 
                                 <tr> 
-                                    <th>Duration : </th><td>' . $resultL[0]['subject'] . '</td> 
+                                    <th>Subject : </th><td>' . $resultL[0]['subject'] . '</td> 
                                 </tr>
                                 <tr> 
                                     <th>Date : </th><td>' . date("d-m-Y", strtotime($resultL[0]['sdate'])) . '</td> 
                                 </tr>
                                 <tr> 
-                                    <th>Time : </th><td>' . date('h:i A', strtotime($resultL[0]['stime'])) . ' to ' . date('h:i A', strtotime($resultL[0]
-                                    ['etime'])) .  '</td> 
+                                    <th>Time : </th><td>' . date('h:i A', strtotime($resultL[0]['stime'])) . ' to ' . date('h:i A', strtotime($resultL[0]['etime'])) .  '</td> 
                                 </tr>
                                 <tr> 
                                     <th>Duration : </th><td>' . $resultL[0]['duration'] . ' Hour</td> 
                                 </tr>
                             </table> 
-                            <button><a  href="https://thewizards.me/">Payment Link<a></button>
+                            <button><a href="https://online-teaching-platform.000webhostapp.com/feedback.php?id=STU' . $resultL[0]['stu_id'] . '">FeedBack Link</a></button>
                         </body> 
                     </html>';
         }
