@@ -13,11 +13,11 @@ if(isset($_POST['submit'])){
     
     $id = $_POST['id'];
     $pass = $_POST['pass'];
-    $pass = md5($pass);
+    $adminpass = md5($pass);
 
     // for admin
     $sqlA = $conn -> prepare("SELECT * FROM admin WHERE admin_id = ? AND passwordA = ?");
-    $sqlA -> bind_param("ss", $id, $pass);
+    $sqlA -> bind_param("ss", $id, $adminpass);
     $sqlA -> execute();
     $resultA = $sqlA -> get_result();
 
