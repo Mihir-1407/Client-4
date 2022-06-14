@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: sql6.freemysqlhosting.net:3306
--- Generation Time: Jun 13, 2022 at 08:29 PM
+-- Generation Time: Jun 14, 2022 at 10:40 AM
 -- Server version: 5.5.62-0ubuntu0.14.04.1
 -- PHP Version: 7.0.33-0ubuntu0.16.04.16
 
@@ -41,6 +41,25 @@ CREATE TABLE `admin` (
 INSERT INTO `admin` (`admin_id`, `admin_name`, `passwordA`) VALUES
 ('Admin', 'Mihir', '0192023a7bbd73250516f069df18b500'),
 ('Wizards', 'Mihir_Client4', 'd3c3662ffb978a7c0094ed643be12b8e');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `feedback`
+--
+
+CREATE TABLE `feedback` (
+  `tutor_id` varchar(30) NOT NULL,
+  `rating` int(11) NOT NULL,
+  `comment` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `feedback`
+--
+
+INSERT INTO `feedback` (`tutor_id`, `rating`, `comment`) VALUES
+('5', 3, 'Good');
 
 -- --------------------------------------------------------
 
@@ -97,7 +116,8 @@ INSERT INTO `lecture_entry` (`lec_id`, `tutor_id`, `stu_id`, `subject`, `sdate`,
 (28, 5, 6, 'MATHS', '2022-06-14', '23:53:00', '01:23:00', 2, 1, 0, 0),
 (29, 5, 6, 'Nice', '2022-06-15', '13:06:00', '15:36:00', 2.5, 1, 0, 0),
 (30, 5, 6, 'NET', '2022-06-13', '12:50:00', '13:20:00', 0.5, 0, 0, 0),
-(31, 5, 6, 'Fifa', '2022-06-14', '01:00:00', '01:30:00', 0.5, 1, 0, 1);
+(31, 5, 6, 'Fifa', '2022-06-14', '01:00:00', '01:30:00', 0.5, 1, 0, 1),
+(32, 5, 6, 'Networking', '2022-06-14', '13:30:00', '14:30:00', 1, 1, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -120,8 +140,7 @@ INSERT INTO `student` (`stu_id`, `stu_name`, `stu_email`) VALUES
 (3, 'Warner', 'war@gmail.com'),
 (4, 'Gayle', 'gayle@gmail.com'),
 (5, 'Morris', 'morris@gmail.com'),
-(6, 'John', 'mihir.hemnani99@gmail.com'),
-(7, 'Mihir', 'gandhimihir0909@gmail.com');
+(6, 'Rohan', 'hemnani.mihir93@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -135,7 +154,7 @@ CREATE TABLE `tutor` (
   `email` varchar(50) NOT NULL,
   `contact_no` varchar(10) NOT NULL,
   `subject` varchar(30) NOT NULL,
-  `passwordT` varchar(30) NOT NULL
+  `passwordT` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -143,11 +162,10 @@ CREATE TABLE `tutor` (
 --
 
 INSERT INTO `tutor` (`tutor_id`, `tutor_name`, `email`, `contact_no`, `subject`, `passwordT`) VALUES
-(1, 'Sachin', 'sachin@gmail.com', '8795462130', 'PT', '6slvurdj'),
-(3, 'Yoyo', 'honey@gmail.com', '5468792130', 'singing', 'Sta$i@HF'),
-(4, 'Michal', 'jakson@gmail.com', '7539518604', 'Dancing', 'qirvg4Of'),
-(5, 'Mihir', 'hemnani.mihir93@gmail.com', '3216549870', 'Net', '%hqo&a#T'),
-(6, 'RRR', 'mihir.hemnani99@gmail.com', '7894561232', 'Security', '2xP!4Fvo');
+(1, 'Sachin', 'sachin@gmail.com', '8795462130', 'PT', 'd91cec22df4451ad9f58a054acded2d5'),
+(3, 'Yoyo', 'honey@gmail.com', '5468792130', 'singing', '3b4dd6d74eee07b59cee5ed68e4b7e9f'),
+(4, 'Michal', 'jakson@gmail.com', '7539518604', 'Dancing', 'a5c3207b752c9410a202518136ddd546'),
+(5, 'Mihir', '19.ecmihirhemnani@gmail.com', '3216549870', 'Networking', '766c8c047a025944ca6d9235c41f70dc');
 
 --
 -- Indexes for dumped tables
@@ -185,7 +203,7 @@ ALTER TABLE `tutor`
 -- AUTO_INCREMENT for table `lecture_entry`
 --
 ALTER TABLE `lecture_entry`
-  MODIFY `lec_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;COMMIT;
+  MODIFY `lec_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
