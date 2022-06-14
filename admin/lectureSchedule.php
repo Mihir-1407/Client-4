@@ -76,15 +76,15 @@
                         </head> 
                         <body> 
                             <h1>Lecture Schedule</h1> 
-                            <table cellspacing="0" style="border: 2px dashed #FB4314; width: 100%;"> 
+                            <table cellspacing="0" style="border: 1px solid black; width: 100%;"> 
                                 <tr> 
-                                <th>Lecture ID : </th><td>' . $lec_id . '</td> 
+                                <th>Lecture ID: </th><td>' . $lec_id . '</td> 
                                 </tr>
                                 <tr> 
-                                    <th>Tutor ID : </th><td>TUT' . $tutor_id . '</td> 
+                                    <th>Tutor ID: </th><td>TUT' . $tutor_id . '</td> 
                                 </tr> 
                                 <tr> 
-                                    <th>Student ID : </th><td>STU' . $stu_id . '</td> 
+                                    <th>Student ID: </th><td>STU' . $stu_id . '</td> 
                                 </tr> 
                                 <tr> 
                                     <th>Date : </th><td>' . date("d-m-Y", strtotime($sdate)) . '</td> 
@@ -93,7 +93,7 @@
                                     <th>Time : </th><td>' . date('h:i A', strtotime($stime)) . '</td> 
                                 </tr>
                                 <tr> 
-                                    <th>Duration : </th><td>' . $duration . ' hour</td> 
+                                    <th>Duration : </th><td>' . $duration . ' hours</td> 
                                 </tr>
                                 <tr> 
                                     <th>Subject : </th><td>' . $subject . '</td> 
@@ -105,7 +105,7 @@
         $result = mail($to, $subjectEmail, $message, $headers);
             echo "<script>alert('Email Sent to TUT$tutor_id')</script>";
         if(!$result){
-            echo "<script>alert('Failed')</script>";
+            echo "<script>alert('Failed to send Email.')</script>";
         }
 
     }
