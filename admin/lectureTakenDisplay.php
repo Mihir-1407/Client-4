@@ -172,7 +172,7 @@
             
             <?php 
             } 
-            $sqlS -> close();
+            $sql -> close();
             }else{
                 echo "<h4>No Records Found.</h4>";
             } 
