@@ -23,47 +23,6 @@
         
         $sqlA -> close();
 
-        // email to New Student
-       
-        $to = $stu_email;
-        
-        // admin email id
-        $fromEmail = "mihir.hemnani99@gmail.com";
-        
-
-        $headers = "MIME-Version: 1.0" . "\r\n";
-        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-        $headers .= 'From: '.$fromEmail.'<'.$fromEmail.'>' . "\r\n".'Reply-To: '.$fromEmail."\r\n" . 'X-Mailer: PHP/' . phpversion();
-
-        $subject = 'AnyDay Tutors';
-        $message = '<html> 
-                        <head> 
-                        </head> 
-                        <body> 
-                            <h1>Login Credentials</h1> 
-                            <table cellspacing="0" style="border: 2px dashed #FB4314; width: 100%;"> 
-                                
-                                <tr> 
-                                    <th>Student ID : </th><td>STU' . $stu_id . '</td> 
-                                </tr> 
-                
-                                <tr> 
-                                    <th>Email ID : </th><td>' . $stu_email . '</td> 
-                                </tr>
-
-
-                            </table> 
-                        </body> 
-                    </html>';
-
-        $result = mail($to, $subject, $message, $headers);
-        if(!$result){
-            echo "<script>alert('Failed')</script>";
-        }else{
-            echo "<script>alert('Email Sent to STU$stu_id')</script>";
-        }
-
-
     }
 
     else if(isset($_POST['tutor'])){
