@@ -52,6 +52,7 @@
                 </div>
                 <a href="displayStudent.php?id=<?php echo $id?>">Student</a>&nbsp;&nbsp;&nbsp;
                 <a href="displayTutor.php?id=<?php echo $id?>">Tutor</a>&nbsp;&nbsp;&nbsp;
+                <a href="displayFeedback.php?id=<?php echo $id?>">FeedBack</a>&nbsp;&nbsp;&nbsp;
                 <a href="../logout.php">Logout</a>&nbsp;&nbsp;
             </div>
         </div>
