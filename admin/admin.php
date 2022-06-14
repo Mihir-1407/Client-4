@@ -20,8 +20,48 @@
         }else{
             echo "<script>alert('Error')</script>";
         }
-
+        
         $sqlA -> close();
+
+        // email to New Student
+       
+        $to = $stu_email;
+        
+        // admin email id
+        $fromEmail = "mihir.hemnani99@gmail.com";
+        
+
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+        $headers .= 'From: '.$fromEmail.'<'.$fromEmail.'>' . "\r\n".'Reply-To: '.$fromEmail."\r\n" . 'X-Mailer: PHP/' . phpversion();
+
+        $subject = 'AnyDay Tutors';
+        $message = '<html> 
+                        <head> 
+                        </head> 
+                        <body> 
+                            <h1>Login Credentials</h1> 
+                            <table cellspacing="0" style="border: 2px dashed #FB4314; width: 100%;"> 
+                                
+                                <tr> 
+                                    <th>Student ID : </th><td>STU' . $stu_id . '</td> 
+                                </tr> 
+                
+                                <tr> 
+                                    <th>Email ID : </th><td>' . $stu_email . '</td> 
+                                </tr>
+
+
+                            </table> 
+                        </body> 
+                    </html>';
+
+        $result = mail($to, $subject, $message, $headers);
+        if(!$result){
+            echo "<script>alert('Failed')</script>";
+        }else{
+            echo "<script>alert('Email Sent to STU$stu_id')</script>";
+        }
 
 
     }
@@ -44,11 +84,11 @@
         $passwordT = str_shuffle($passwordT);
         $number = rand(0,  $len - 9);
         $passwordT = substr($passwordT, $number, 8);
+        $tutor_password = md5($passwordT);
             
         $sqlA = $conn -> prepare("INSERT INTO tutor VALUES(?,?,?,?,?,?)");
-        $sqlA -> bind_param('ssssss', $tutor_id, $tutor_name, $tutor_email, $contact_no, $subject, $passwordT);
+        $sqlA -> bind_param('ssssss', $tutor_id, $tutor_name, $tutor_email, $contact_no, $subject, $tutor_password);
         $sqlA -> execute();
-
 
         if($sqlA -> affected_rows > 0){
             echo "<script>alert('New Tutor Added')</script>";
@@ -57,9 +97,53 @@
         }
 
         $sqlA -> close();
-}
+
+        // email to New Tutor
+       
+        $to = $tutor_email;
+        
+        // admin email id
+        $fromEmail = "mihir.hemnani99@gmail.com";
+        
+
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+        $headers .= 'From: '.$fromEmail.'<'.$fromEmail.'>' . "\r\n".'Reply-To: '.$fromEmail."\r\n" . 'X-Mailer: PHP/' . phpversion();
+
+        $subjectEmail = 'AnyDay Tutors';
+        $message = '<html> 
+                        <head> 
+                        </head> 
+                        <body> 
+                            <h1>Login Credentials</h1> 
+                            <table cellspacing="0" style="border: 2px dashed #FB4314; width: 100%;"> 
+                                
+                                <tr> 
+                                    <th>Tutor ID : </th><td>TUT' . $tutor_id . '</td> 
+                                </tr> 
+                
+                                <tr> 
+                                    <th>Email ID : </th><td>' . $tutor_email . '</td> 
+                                </tr>
+
+                                <tr> 
+                                    <th>Password : </th><td>' . $passwordT . '</td> 
+                                </tr>
 
 
+                            </table> 
+                        </body> 
+                    </html>';
+
+        $result = mail($to, $subjectEmail, $message, $headers);
+        if(!$result){
+            echo "<script>alert('Failed')</script>";
+        }else{
+            echo "<script>alert('Email Sent to TUT$tutor_id')</script>";
+        }
+
+    }
+    
 
 ?>
 

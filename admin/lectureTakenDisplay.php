@@ -1,6 +1,7 @@
 <?php
     include 'header.php'; 
     $curr_date = date("Y-m-d");
+    $curr_time = date("H:m:s");
 ?>
 
 <br>
@@ -17,7 +18,7 @@
 
         <?php
 
-            $sqlS = $conn -> prepare("SELECT * FROM lecture_entry WHERE sdate <= '$curr_date' AND conducted = 1 ORDER BY sdate");
+            $sqlS = $conn -> prepare("SELECT * FROM lecture_entry WHERE sdate <= '$curr_date' AND conducted = 1 and submitted = 1 ORDER BY sdate");
             $sqlS -> execute();
             $result1 = $sqlS -> get_result();
 
@@ -110,7 +111,7 @@
         <?php
 
             
-            $sql = $conn -> prepare("SELECT * FROM lecture_entry WHERE conducted = 0 AND sdate > '$curr_date' ORDER BY sdate");
+            $sql = $conn -> prepare("SELECT * FROM lecture_entry WHERE conducted = 0 AND sdate >= '$curr_date' AND stime < '$curr_time' ORDER BY sdate");
             $sql -> execute();
             $result2 = $sql -> get_result();
 

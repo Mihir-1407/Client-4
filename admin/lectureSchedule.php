@@ -70,7 +70,7 @@
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
         $headers .= 'From: '.$fromEmail.'<'.$fromEmail.'>' . "\r\n".'Reply-To: '.$fromEmail."\r\n" . 'X-Mailer: PHP/' . phpversion();
 
-        $subject = 'AnyDay Tutors';
+        $subjectEmail = 'AnyDay Tutors';
         $message = '<html> 
                         <head> 
                         </head> 
@@ -96,13 +96,13 @@
                                     <th>Duration : </th><td>' . $duration . ' hours</td> 
                                 </tr>
                                 <tr> 
-                                    <th>Duration : </th><td>' . $subject . '</td> 
+                                    <th>Subject : </th><td>' . $subject . '</td> 
                                 </tr>
                             </table> 
                         </body> 
                     </html>';
         
-        $result = mail($to, $subject, $message, $headers);
+        $result = mail($to, $subjectEmail, $message, $headers);
             echo "<script>alert('Email Sent to TUT$tutor_id')</script>";
         if(!$result){
             echo "<script>alert('Failed to send Email.')</script>";
