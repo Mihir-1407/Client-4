@@ -75,7 +75,7 @@
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
         $headers .= 'From: '.$from.'<'.$from.'>' . "\r\n".'Reply-To: '.$from."\r\n" . 'X-Mailer: PHP/' . phpversion();
 
-        $subject = 'AnyDay Tutors';
+        $subject = 'Thank You for taking a lecture from us.';
         $message = '<html> 
                         <head> 
                         </head> 
@@ -105,7 +105,7 @@
                                     <th>Duration : </th><td>' . $resultL[0]['duration'] . ' Hour</td> 
                                 </tr>
                             </table> 
-                            <button><a  href="https://thewizards.me/">Payment Link<a></button>
+                            <button><a  href="https://thewizards.me/">Feedback Form<a></button>
                         </body> 
                     </html>';
         }
