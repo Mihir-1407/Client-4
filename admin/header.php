@@ -38,7 +38,7 @@
                 $sqlA -> execute();
                 $result = $sqlA -> get_result() -> fetch_all(MYSQLI_ASSOC);
                 if(count($result) > 0){
-                echo "Hello " . $result[0]['admin_name'] . "<br>";
+                echo "Hello " . $result[0]['admin_name'] . " !<br>";
                 $sqlA -> close();
                 }
                 ?>

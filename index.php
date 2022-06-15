@@ -58,7 +58,7 @@ include 'header.php';
 ?>
 <div class="login">
     <div class="header">
-        <h1><?php echo $company_logo?><?php echo $company_name?><br>
+        <h1><?php echo $company_logo?><?php echo $company_name?>
         </h1>
     </div>
     

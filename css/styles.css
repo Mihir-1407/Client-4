@@ -9,15 +9,15 @@ body {
 }
 
 div.header {
-    height: 50px;
+    height: 60px;
     margin: auto;
     margin-top: 10px;
-    width: 40%;
-    padding: 10px;
+    width: 50%;
+    padding: 15px 10px 6px 10px;
     text-align: center;
     background-color: #571581;
     color: aliceblue;
-    border-radius: 10px;
+    border-radius: 15px;
 }
 
 div.form {
@@ -89,7 +89,12 @@ div.navigation a:hover {
     color: #DBDFFD;
 }
 
-
+.header img {
+    width: 120px;
+    height: 50px;
+    vertical-align: middle;
+    margin-right: 1rem;
+}
 
 
 .login .form h1 {
@@ -108,6 +113,10 @@ div.navigation a:hover {
     justify-items: center;
     justify-content: space-evenly;
     align-items: flex-start;
+}
+
+.company h1:hover {
+    color: yellow;
 }
 
 .company img {
@@ -194,14 +203,12 @@ footer {
     width: 100%;
     margin-top: 2rem;
     background-color: #571581;
-    padding: 1.2rem 0;
+    padding: 0.5rem 0;
     text-align: center;
-    border-top: 1px solid white;
 }
 
 footer p {
     color: white;
-    margin-bottom: 1rem;
 }
 
 footer a {
@@ -216,12 +223,17 @@ footer a {
 
 footer p a:hover {
     color: #42caff;
-    font-weight: 900;
+    font-weight: 800;
 }
 
 .logo-bottom {
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
+    vertical-align: middle;
+}
+
+.login+footer {
+    position: fixed;
 }
 
 
