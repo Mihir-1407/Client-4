@@ -112,7 +112,7 @@ div.navigation a:hover {
 
 .company img {
     height: 50px;
-    width: 50px;
+    width: 150px;
 }
 
 h1 {
@@ -145,12 +145,6 @@ table button:hover a {
 button a {
     color: aliceblue;
     text-decoration: none;
-}
-
-
-.header .logo-bottom {
-    width: 50px;
-    height: 50px;
 }
 
 .dropbtn {
@@ -226,13 +220,10 @@ footer p a:hover {
 }
 
 .logo-bottom {
-    height: 30px;
-    width: 30px;
-    vertical-align: middle;
-    border: 0.2px solid black;
-    border-radius: 50%;
-    margin-right: 2px;
+    height: 40px;
+    width: 40px;
 }
+
 
 .disclaimer {
     display: none !important;

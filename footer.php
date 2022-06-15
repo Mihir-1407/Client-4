@@ -1,7 +1,7 @@
 <footer class="">
 <p>Copyright &copy; 2022 - AnyDay Tutors. All Rights reserved. || Magically Created by
       <a href=" https://www.thewizards.me" target="_blank">
-        <img class="logo-bottom" src="./Logo.png">The&nbsp;Wizards
+        <img class="logo-bottom" src="./wiz.png">The&nbsp;Wizards
       </a>
 </p>
     <div>
