@@ -46,15 +46,6 @@
             $to = $rowS['stu_email'];
         }
 
-
-        $sql = $conn -> prepare("SELECT * FROM tutor WHERE tutor_id = ?");
-        $sql -> bind_param("s", $tu_id);
-        $sql -> execute();
-        $result = $sql -> get_result();
-        while($row = $result -> fetch_assoc()){
-            $from = $row['email'];
-        }
-
         
         $sqlL = $conn -> prepare("SELECT * FROM lecture_entry WHERE lec_id = ?");
         $sqlL -> bind_param("s", $lec_id);
@@ -62,9 +53,13 @@
         $resultL = $sqlL -> get_result() -> fetch_all(MYSQLI_ASSOC);
         if(count($resultL) > 0){
 
+        $from = 'gandhimihir0909@gmail.com';    
+
         $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-        $headers .= 'From: '.$from.'<'.$from.'>' . "\r\n".'Reply-To: '.$from."\r\n" . 'X-Mailer: PHP/' . phpversion();
+        $headers .= 'From: AnyDay Tutors<'.$from.'>' . "\r\n";
+        $headers .= 'Reply-To: '.$from."\r\n";
+        $headers .= 'X-Mailer: PHP/' . phpversion();
 
         $subject = 'AnyDay Tutors';
         $message = '<html> 

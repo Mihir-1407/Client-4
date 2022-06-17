@@ -1,10 +1,16 @@
 <?php
     session_start();
     include 'config.php';
+
+    if(isset($_GET['id1'])){
     // id1 for tutor and id2 for lecure
     $_SESSION['id1'] = $_GET['id1'];
     $_SESSION['id2'] = $_GET['id2'];
-
+    }
+    else{
+        $_SESSION['id1'] = 'Tut Id';
+        $_SESSION['id2'] = 'Lec Id';
+    }
     if(isset($_POST['submit'])){
         $temp = $_POST['tutor_id'];
         $len = strlen($temp);
@@ -30,14 +36,20 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>AnyDay Tutors</title>
+        <title>AnyDay Tutors - Payment</title>
         <style>    
             * {    
                 box-sizing: border-box;    
-            }    
+            }
+            
+            h1{
+                margin: 2rem;
+                text-align:center;
+            }
+
                 
             input[type=text], select, textarea {    
-                width: 25%;    
+                width: 100%;    
                 padding: 12px; 
                 border: 1px solid rgb(70, 68, 68);    
                 border-radius: 4px;    
@@ -45,7 +57,7 @@
             }   
 
             input[type=number], select, textarea {    
-                width: 25%;    
+                width: 100%;    
                 padding: 12px;    
                 border: 1px solid rgb(70, 68, 68);    
                 border-radius: 4px;    
@@ -75,7 +87,6 @@
             .container { 
                 margin: auto;   
                 width: 75%;
-                
                 border-radius: 5px;    
                 background-color: #f2f2f2;    
                 padding: 20px;    
@@ -84,7 +95,8 @@
             .col-25 {    
                 float: left;    
                 width: 25%;    
-                margin-top: 6px;    
+                margin-top: 6px;   
+                text-align: center; 
             }    
                 
             .col-75 {    
@@ -106,8 +118,8 @@
     </head>    
 <body>   
     <div>
-        <h2 style="text-align: center;">Thank You for choosing AnyDay Tutors for online learning. Please click the link below for payment.</h2>    
-        <form action="payment.php?id=<?php echo $_GET['id2']?>" method="post">    
+        <h1>Thank You for choosing AnyDay Tutors!</h1><h3>Please click the Payment link below for the payment. Also, you can fill up the Feedback form below to help us get better.</h3>    
+        <form action="payment.php?id=<?php echo $_SESSION['id2']?>" method="post">    
             <div class="row">    
             <div class="col-25">    
                 <label for="LectureID">Lecture ID</label>    
@@ -130,11 +142,20 @@
 
     <br><br><br>
     <div class="container">    
-        <h2 style="text-align: center; color:darkgreen">FEEDBACK FORM</h2>    
+        <h2 style="text-align: center; color:darkgreen">FEEDBACK FORM (Optional)</h2>    
         <form action="<?php $_SERVER['PHP_SELF']?>" method="post">    
             <div class="row">    
             <div class="col-25">    
-                <label for="tutorID">TUTOR ID</label>    
+                <label for="lectureID">Lecture Id</label>    
+            </div>    
+            <div class="col-75">    
+                <input type="text" id="lecture_id" name="lecture_id" placeholder="" value="<?php echo $_SESSION['id2']?>" required readonly>    
+            </div>    
+            </div>
+        
+            <div class="row">    
+            <div class="col-25">    
+                <label for="tutorID">Tutor Id</label>    
             </div>    
             <div class="col-75">    
                 <input type="text" id="tutor_id" name="tutor_id" placeholder="" value="<?php echo $_SESSION['id1']?>" required readonly>    
@@ -152,18 +173,20 @@
             
             <div class="row">    
             <div class="col-25">    
-                <label for="feedback">Feed Back</label>    
+                <label for="feedback">Feedback</label>    
             </div>    
             <div class="col-75">    
-                <textarea id="comment" name="comment" placeholder="Write something.." style="height:200px" required></textarea>    
+                <textarea id="comment" name="comment" placeholder="Please give your valuable feedback..." style="height:200px" required></textarea>    
             </div>    
-            </div>    
+            </div> 
+            <div class="row">  
             <div class="col-25">    
             <label for=""></label>    
             </div>
             <div class="col-75">    
             <input type="submit" value="Submit" name="submit">    
-            </div>    
+            </div>
+            </div>     
         </form>    
     </div>    
 </body>    
