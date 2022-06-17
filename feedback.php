@@ -1,16 +1,7 @@
 <?php
-    session_start();
     include 'config.php';
+    include 'company.php';
 
-    if(isset($_GET['id1'])){
-    // id1 for tutor and id2 for lecure
-    $_SESSION['id1'] = $_GET['id1'];
-    $_SESSION['id2'] = $_GET['id2'];
-    }
-    else{
-        $_SESSION['id1'] = 'Tut Id';
-        $_SESSION['id2'] = 'Lec Id';
-    }
     if(isset($_POST['submit'])){
         $temp = $_POST['tutor_id'];
         $len = strlen($temp);
@@ -119,24 +110,48 @@
 <body>   
     <div>
         <h1>Thank You for choosing AnyDay Tutors!</h1><h3>Please click the Payment link below for the payment. Also, you can fill up the Feedback form below to help us get better.</h3>    
-        <form action="payment.php?id=<?php echo $_SESSION['id2']?>" method="post">    
+        <form action="payment.php?id=<?php echo $_GET['id2']?>" method="post">    
             <div class="row">    
-            <div class="col-25">    
-                <label for="LectureID">Lecture ID</label>    
-            </div>    
-            <div class="col-75">    
-                <input type="text" id="tutor_id" name="tutor_id" placeholder="" value="<?php echo $_SESSION['id2']?>" required readonly>    
-            </div>    
+                <div class="col-25">    
+                    <label for="LectureID">Lecture ID</label>    
+                </div>    
+                <div class="col-75">    
+                    <input type="text" id="lec_id" name="lec_id" placeholder="" value="<?php echo $_GET['id2']?>" required readonly>    
+                </div>    
             </div>
                 
             <div class="row">  
-            <div class="col-25">    
-                <label for="payment"></label>  
-            </div> 
-            <div class="col-75">    
-                <input type="submit" value="Payment" name="payment">    
-            </div>   
-            </div>    
+                <div class="col-25">    
+                    <label for="payment"></label>  
+                </div> 
+                <!-- define lecture cost hour wise -->
+                <?php
+                    $sqlL = $conn -> prepare("SELECT * FROM lecture_entry WHERE lec_id = ?");
+                    $sqlL -> bind_param("s", $_GET['id2']);
+                    $sqlL -> execute();
+                    $result = $sqlL -> get_result() -> fetch_all(MYSQLI_ASSOC);
+                    // per hour class price set to $10 for testing
+                    $price = $result[0]['duration'] * 100 * 10;
+                    $Lecture = $result[0]['lec_id'];
+                    $Duration = $result[0]['duration'];
+                    if($result[0]['payment'] == 1){
+                        echo "Payment Done";
+                    }else{
+                    ?>
+                        <script
+                        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                        data-key="<?php echo $stripe["publishable_key"]?>"
+                        data-amount="<?php echo $price?>"
+                        data-name="<?php echo $company_name?>"
+                        data-email = "anydaytutor@gmail.com"
+                        data-description="<?php echo $Lecture?>"
+                        data-image="wiz.png"    
+                        data-currency="usd">
+                    </script>
+                    <?php
+                    }
+                ?>  
+            </div>
         </form>   
     </div>
 
