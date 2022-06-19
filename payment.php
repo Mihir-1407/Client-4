@@ -24,18 +24,24 @@
         $sqlL -> execute();
         $result = $sqlL -> get_result() -> fetch_all(MYSQLI_ASSOC);
         $price = $result[0]['duration'] * 100 * 10;
-        
+        echo "<script>alert('Payment Successful')</script>";        
 
         $data = \Stripe\Charge::create(array(
             'amount'=>$price,
             'currency'=>'usd',
             'description'=>$lec_id,
-            'source'=>$token
+            'payment_method_types' => ['card'],
+            'payment_method_data' => [
+                'type' => 'card',
+                'card' => [
+                    'token' => $token
+                ]
+            ]
         ));
+
         // echo '<pre>';
         // print_r($data);
         // echo '</pre>';
-        echo "<script>alert('Payment Successful')</script>";
         
     }else{
         echo "<script>alert('Payment Unsuccessful')</script>";
