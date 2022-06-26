@@ -43,7 +43,7 @@
         $passwordT = str_shuffle($passwordT);
         $number = rand(0,  $len - 9);
         $passwordT = substr($passwordT, $number, 8);
-        $tutor_password = md5($passwordT);
+        $tutor_password = $passwordT;
             
         $sqlA = $conn -> prepare("INSERT INTO tutor VALUES(?,?,?,?,?,?)");
         $sqlA -> bind_param('ssssss', $tutor_id, $tutor_name, $tutor_email, $contact_no, $subject, $tutor_password);
@@ -158,7 +158,7 @@
                 <label for="Tutor_Email">Email</label>
                 <input type="email" name="Tutor_Email" id="Tutor_Email" placeholder="" required>
                 <label for="contact">Contact No.</label>
-                <input type="tel" name="contact" id="contact" placeholder="" required>
+                <input type="tel" id="contact" name="contact" placeholder="9999999999" pattern="[0-9]{10}" required>
                 <label for="subject">Subject</label>
                 <input type="text" name="subject" id="subject" placeholder="" required>
                 <br>

@@ -24,7 +24,7 @@
         <label for="td_email">Email</label>
         <input type="email" name="tuEmail" id="tuEmail" value="<?php echo $result[0]['email'] ?>">
         <label for="td_contact">Contact No.</label>
-        <input type="text" name="tuContact" id="tuContact" value="<?php echo $result[0]['contact_no'] ?>">
+        <input type="tel" id="tuContact" name="tuContact" value="<?php echo $result[0]['contact_no'] ?>"  pattern="[0-9]{10}">
         <label for="td_subject">Subject</label>
         <input type="subject" name="tuSubject" id="tuSubject" value="<?php echo $result[0]['subject'] ?>">
         <br>

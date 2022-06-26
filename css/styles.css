@@ -42,11 +42,28 @@ input {
     border: 1px solid black;
     border-left: 2px solid blue;
     border-radius: 2px;
-    height: 24px;
     padding: 2px 4px;
 }
 
-input:focus {
+textarea {
+    width: 100%;
+    border: none;
+    background-color: #E8F9FD;
+    border: 1px solid black;
+    border-left: 2px solid blue;
+    border-radius: 2px;
+    height: 24px;
+    padding: 2px 4px;   
+}
+
+textarea {
+    resize: vertical;
+    max-height: 100px;
+    min-height: 50px;
+}
+
+
+input:focus textarea:focus{
     outline: none;
     border-left: 2px rgb(0, 234, 255) solid;
 }
@@ -58,6 +75,7 @@ input.button {
     border-radius: 8px;
     padding: 0 2px;
 }
+
 
 input.button:hover {
     background-color: transparent;

@@ -16,8 +16,8 @@
         <?php
             $conducted = false;
             $submitted = false;
-            $sqlL = $conn -> prepare("SELECT * FROM lecture_entry WHERE tutor_id = ? AND conducted = ? AND sdate >= ? AND submitted =  ?  ORDER BY sdate, stime");
-            $sqlL -> bind_param("ssss", $id, $conducted, $curr_date, $submitted);
+            $sqlL = $conn -> prepare("SELECT * FROM lecture_entry WHERE tutor_id = ? AND conducted = ? AND submitted =  ?  ORDER BY sdate, stime");
+            $sqlL -> bind_param("sss", $_SESSION['id'], $conducted, $submitted);
             $sqlL -> execute();
             $result = $sqlL -> get_result();
 
@@ -64,7 +64,8 @@
                 <td><?php echo $row['duration']; ?> </td>
 
                 <?php
-                    if($row['etime'] <= $curr_time && $row['sdate'] == $curr_date){
+                    // echo $curr_time . "  " . $row['etime']; 
+                    if($row['etime'] < $curr_time && $row['sdate'] == $curr_date){
                         echo '<td><a href="lectureEntry.php?id=' . $row["lec_id"] . '"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVnFhpbg03-VX8S1QQOrZ1n7WtNhp7f4S8qWZgamtaXLCZJ6w6dsMCUzDZ-t07HDMr1Mw&usqp=CAU" style="width: 20px; height: 20px;" /></a></td>';
                     }else{
                         echo '<td><a aria-disabled="true"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVnFhpbg03-VX8S1QQOrZ1n7WtNhp7f4S8qWZgamtaXLCZJ6w6dsMCUzDZ-t07HDMr1Mw&usqp=CAU" style="width: 20px; height: 20px;" /></a></a></td>';
