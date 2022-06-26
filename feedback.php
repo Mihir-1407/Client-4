@@ -139,31 +139,33 @@
                     }else{
                     ?>
                         <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
-    <!-- Set up a container element for the button -->
                         <div id="paypal-button-container"></div>
                         <script>
                         paypal.Buttons({
-                            // Sets up the transaction when a payment button is clicked
                             createOrder: (data, actions) => {
                             return actions.order.create({
                                 purchase_units: [{
                                 amount: {
-                                    value: '<?php echo $price; ?>' // Can also reference a variable or function
+                                    value: '<?php echo $price; ?>' 
                                 }
                                 }]
                             });
                             },
-                            // Finalize the transaction after payer approval
                             onApprove: (data, actions) => {
                             return actions.order.capture().then(function(orderData) {
-                                // Successful capture! For dev/demo purposes:
                                 console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
                                 const transaction = orderData.purchase_units[0].payments.captures[0];
                                 alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
-                                // When ready to go live, remove the alert and show a success message within this page. For example:
-                                // const element = document.getElementById('paypal-button-container');
-                                // element.innerHTML = '<h3>Thank you for your payment!</h3>';
-                                // Or go to another URL:  actions.redirect('thank_you.html');
+                            
+                                <?php
+                                    $sql = $conn -> prepare("Update lecture_entry SET payment = 1 WHERE lec_id = ?");
+                                    $sql -> bind_param("s", $lec_id);
+                                    $sql -> execute();
+                                    $sql -> close();
+
+                                ?>
+
+
                             });
                             }
                         }).render('#paypal-button-container');
@@ -184,7 +186,7 @@
                 <label for="lectureID">Lecture Id</label>    
             </div>    
             <div class="col-75">    
-                <input type="text" id="lecture_id" name="lecture_id" placeholder="" value="<?php echo $_SESSION['id2']?>" required readonly>    
+                <input type="text" id="lecture_id" name="lecture_id" placeholder="" value="<?php echo $_GET['id2']?>" required readonly>    
             </div>    
             </div>
         
@@ -193,7 +195,7 @@
                 <label for="tutorID">Tutor Id</label>    
             </div>    
             <div class="col-75">    
-                <input type="text" id="tutor_id" name="tutor_id" placeholder="" value="<?php echo $_SESSION['id1']?>" required readonly>    
+                <input type="text" id="tutor_id" name="tutor_id" placeholder="" value="<?php echo $_GET['id1']?>" required readonly>    
             </div>    
             </div>
             
