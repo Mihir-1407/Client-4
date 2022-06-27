@@ -216,12 +216,12 @@ button a {
 }
 
 footer {
-    position: relative;
-    bottom: 0;
+    position: absolute;
+    top: calc(100vh - 92px);
     width: 100%;
     margin-top: 2rem;
     background-color: #571581;
-    padding: 0.5rem 0;
+    padding: 0.4rem 0;
     text-align: center;
 }
 
@@ -249,11 +249,6 @@ footer p a:hover {
     width: 30px;
     vertical-align: middle;
 }
-
-.login+footer {
-    position: fixed;
-}
-
 
 .disclaimer {
     display: none !important;

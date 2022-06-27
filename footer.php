@@ -1,5 +1,5 @@
 <footer>
-<p>Copyright &copy; 2022 - AnyDay Tutors. All Rights reserved. || Magically Created by
+<p>Copyright &copy; 2022 - AnyDay Tutors. All Rights Reserved. || Magically Created by
       <a href=" https://www.thewizards.me" target="_blank">
         <img class="logo-bottom" src="./wiz.png">The&nbsp;Wizards
       </a>
