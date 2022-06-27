@@ -2,6 +2,14 @@
     include 'config.php';
     include 'company.php';
 
+    if(isset($_GET['id2']) && isset($_GET['id1'])){
+        $lecture = $_GET['id2'];
+        $tutor = $_GET['id1'];
+    }else{
+        $lecture = "";
+        $tutor = "";
+    }
+
     if(isset($_POST['submit'])){
         $temp = $_POST['tutor_id'];
         $len = strlen($temp);
@@ -109,67 +117,91 @@
     </head>    
 <body>   
     <div>
-        <h1>Thank You for choosing AnyDay Tutors!</h1><h3>Please click the Payment link below for the payment. Also, you can fill up the Feedback form below to help us get better.</h3>    
-        <form>    
+        <h1>Thank You for choosing AnyDay Tutors!</h1><h3 style="text-align: center;">Please click the Payment link below for the payment. Also, you can fill up the Feedback form below to help us get better.</h3>    
+        <form action="<?php $_SERVER['PHP_SELF']?>" method="post">    
+            
+            
             <div class="row">    
                 <div class="col-25">    
                     <label for="LectureID">Lecture ID</label>    
                 </div>    
-                <div class="col-75">    
-                    <input type="text" id="lec_id" name="lec_id" placeholder="" value="<?php echo $_GET['id2']?>" required readonly>    
+                <div class="col-25">    
+                    <?php
+                        if(isset($_POST['lec_id'])){
+                            $lecture = $_POST['lec_id'];
+                        }
+                    ?>
+                    <input type="text" id="lec_id" name="lec_id" placeholder="" value="<?php echo $lecture?>" required>    
                 </div>    
             </div>
-                
+
             <div class="row">  
                 <div class="col-25">    
                     <label for="payment"></label>  
                 </div> 
                 <!-- define lecture cost hour wise -->
                 <?php
-                    $sqlL = $conn -> prepare("SELECT * FROM lecture_entry WHERE lec_id = ?");
-                    $sqlL -> bind_param("s", $_GET['id2']);
-                    $sqlL -> execute();
-                    $result = $sqlL -> get_result() -> fetch_all(MYSQLI_ASSOC);
-                    // per hour class price set to $10 for testing
-                    $price = $result[0]['duration'] ;
-                    $Lecture = $result[0]['lec_id'];
-                    $Duration = $result[0]['duration'];
-                    if($result[0]['payment'] == 1){
-                        echo "Payment Done";
-                    }else{
-                    ?>
-                        <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
-                        <div id="paypal-button-container"></div>
-                        <script>
-                        paypal.Buttons({
-                            createOrder: (data, actions) => {
-                            return actions.order.create({
-                                purchase_units: [{
-                                amount: {
-                                    value: '<?php echo $price; ?>' 
+                    if(isset($_POST['lec_id']) && isset($_POST['payment'])){
+                            ?>
+
+                            <?php
+                                $sqlL = $conn -> prepare("SELECT * FROM lecture_entry WHERE lec_id = ?");
+                                $sqlL -> bind_param("s", $lecture);
+                                $sqlL -> execute();
+                                $result = $sqlL -> get_result() -> fetch_all(MYSQLI_ASSOC);
+
+                                if(count($result) == 0){
+                                    echo "<script>alert('Enter valid Lecture ID')</script>";
+                                    die("<h1>Invalid Lecture ID</h1>");
                                 }
-                                }]
-                            });
-                            },
-                            onApprove: (data, actions) => {
-                            return actions.order.capture().then(function(orderData) {
-                                console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-                                const transaction = orderData.purchase_units[0].payments.captures[0];
-                                alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
-                            
-                                <?php
-                                    $sql = $conn -> prepare("Update lecture_entry SET payment = 1 WHERE lec_id = ?");
-                                    $sql -> bind_param("s", $lec_id);
-                                    $sql -> execute();
-                                    $sql -> close();
+                                // per hour class price set to $10 for testing
+                                $price = $result[0]['duration'] ;
+                                $Lecture = $result[0]['lec_id'];
+                                $Duration = $result[0]['duration'];
+                                if($result[0]['payment'] == 1){
+                                    echo "Payment Done";
+                                }else{
 
                                 ?>
+                                    <br>
+                                    <br>
+                                    <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
+                                    <div id="paypal-button-container" style="text-align: center;"></div>
+                                    <script>
+                                    paypal.Buttons({
+                                        createOrder: (data, actions) => {
+                                        return actions.order.create({
+                                            purchase_units: [{
+                                            amount: {
+                                                value: '<?php echo $price; ?>' 
+                                            }
+                                            }]
+                                        });
+                                        },
+                                        onApprove: (data, actions) => {
+                                        return actions.order.capture().then(function(orderData) {
+                                            console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                                            const transaction = orderData.purchase_units[0].payments.captures[0];
+                                            alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
+                                        
+                                            <?php
+                                                $sql = $conn -> prepare("Update lecture_entry SET payment = 1 WHERE lec_id = ?");
+                                                $sql -> bind_param("s", $lec_id);
+                                                $sql -> execute();
+                                                $sql -> close();
+
+                                            ?>
 
 
-                            });
-                            }
-                        }).render('#paypal-button-container');
-                        </script>
+                                        });
+                                    }
+                                }).render('#paypal-button-container');
+                                </script>
+                        <?php
+                        }
+                    }else{
+                        ?>
+                        <input type="submit" value="Payment" name="payment">    
                     <?php
                     }
                 ?>  
@@ -186,7 +218,7 @@
                 <label for="lectureID">Lecture Id</label>    
             </div>    
             <div class="col-75">    
-                <input type="text" id="lecture_id" name="lecture_id" placeholder="" value="<?php echo $_GET['id2']?>" required readonly>    
+                <input type="text" id="lecture_id" name="lecture_id" placeholder="" value="<?php echo $lecture?>" required>    
             </div>    
             </div>
         
@@ -195,7 +227,7 @@
                 <label for="tutorID">Tutor Id</label>    
             </div>    
             <div class="col-75">    
-                <input type="text" id="tutor_id" name="tutor_id" placeholder="" value="<?php echo $_GET['id1']?>" required readonly>    
+                <input type="text" id="tutor_id" name="tutor_id" placeholder="" value="<?php echo $tutor?>" required>    
             </div>    
             </div>
             
