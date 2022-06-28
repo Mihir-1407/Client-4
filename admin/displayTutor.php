@@ -15,6 +15,8 @@
 
     
 ?>
+
+<div class="page-wrap">
 <section>
 <div>
     <div class="disptut">
@@ -91,6 +93,7 @@
     </div>
 </div>
 </section>
+</div>
 
 <?php
     include "../footer.php";

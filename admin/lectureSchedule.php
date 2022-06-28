@@ -121,6 +121,7 @@ include '../config.php';
 
 ?>
 
+<div class="page-wrap">
 <section>
     <h2>Schedule Lecture</h2>
     <div class="form">  
@@ -159,6 +160,7 @@ include '../config.php';
         </form>
     </div>
 </section>
+</div>
 
 <?php
     include "../footer.php";

@@ -59,8 +59,8 @@ session_start();
 
 <?php
 include 'header.php';
-
 ?>
+<div class="page-wrap">
 <div class="login">
     <div class="header">
         <h1><?php echo $company_logo?><?php echo $company_name?>
@@ -79,5 +79,5 @@ include 'header.php';
         </form>
     </div>  
 </div>
-
+</div>
 <?php include 'footer.php'?>

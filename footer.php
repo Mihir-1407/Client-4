@@ -3,8 +3,7 @@
       <a href=" https://www.thewizards.me" target="_blank">
         <img class="logo-bottom" src="./wiz.png">The&nbsp;Wizards
       </a>
-</p>
-    
+</p> 
 </footer>
 </body>
 </html>

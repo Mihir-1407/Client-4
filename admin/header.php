@@ -42,6 +42,9 @@
                 $sqlA -> close();
                 }
                 ?>
+
+                <div class="nav-items">
+                
                 <a href="admin.php?id=<?php echo $id?>">Home</a>&nbsp;&nbsp;&nbsp;
                 <div class="dropdown">
                     <a class="dropbtn" href="" onclick="return false">Lecture</a>&nbsp;&nbsp;&nbsp;
@@ -53,7 +56,8 @@
                 <a href="displayStudent.php?id=<?php echo $id?>">Student</a>&nbsp;&nbsp;&nbsp;
                 <a href="displayTutor.php?id=<?php echo $id?>">Tutor</a>&nbsp;&nbsp;&nbsp;
                 <a href="displayFeedback.php?id=<?php echo $id?>">FeedBack</a>&nbsp;&nbsp;&nbsp;
-                <a href="../logout.php">Logout</a>&nbsp;&nbsp;
+                <a href="../logout.php">Logout</a>
+                </div>
             </div>
         </div>
     </header>

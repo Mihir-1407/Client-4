@@ -1,7 +1,7 @@
 <?php
     include 'header.php';
 ?>
-
+<div class="page-wrap">
 <div>
     <div class="dispstu">
         <h2>FeedBack</h2><br>
@@ -60,14 +60,9 @@
         </table>
 
     </div>
+</div>
+</div>
 
     <?php
         include "../footer.php";
     ?>
-
-    <?php 
-    
-    ?>
-
-    </div>
-</div>

@@ -3,6 +3,12 @@
     padding: 0;
 }
 
+html,
+body {
+    height: 100%;
+    overflow-x: hidden;
+}
+
 body {
     margin: auto;
     background-image: radial-gradient(circle at center center, transparent, rgb(255, 255, 255)), linear-gradient(309deg, rgba(90, 90, 90, 0.05) 0%, rgba(90, 90, 90, 0.05) 50%, rgba(206, 206, 206, 0.05) 50%, rgba(206, 206, 206, 0.05) 100%), linear-gradient(39deg, rgba(13, 13, 13, 0.05) 0%, rgba(13, 13, 13, 0.05) 50%, rgba(189, 189, 189, 0.05) 50%, rgba(189, 189, 189, 0.05) 100%), linear-gradient(144deg, rgba(249, 249, 249, 0.05) 0%, rgba(249, 249, 249, 0.05) 50%, rgba(111, 111, 111, 0.05) 50%, rgba(111, 111, 111, 0.05) 100%), linear-gradient(166deg, rgba(231, 231, 231, 0.05) 0%, rgba(231, 231, 231, 0.05) 50%, rgba(220, 220, 220, 0.05) 50%, rgba(220, 220, 220, 0.05) 100%), linear-gradient(212deg, rgba(80, 80, 80, 0.05) 0%, rgba(80, 80, 80, 0.05) 50%, rgba(243, 243, 243, 0.05) 50%, rgba(243, 243, 243, 0.05) 100%), radial-gradient(circle at center center, hsl(107, 19%, 100%), hsl(107, 19%, 100%));
@@ -36,6 +42,7 @@ div form {
 
 
 input {
+    height: 25px;
     width: 100%;
     border: none;
     background-color: #E8F9FD;
@@ -53,7 +60,7 @@ textarea {
     border-left: 2px solid blue;
     border-radius: 2px;
     height: 24px;
-    padding: 2px 4px;   
+    padding: 2px 4px;
 }
 
 textarea {
@@ -63,7 +70,7 @@ textarea {
 }
 
 
-input:focus textarea:focus{
+input:focus textarea:focus {
     outline: none;
     border-left: 2px rgb(0, 234, 255) solid;
 }
@@ -86,6 +93,7 @@ input.button:hover {
 div.head_admin {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     width: 100%;
     height: 60px;
     background-color: #571581;
@@ -121,7 +129,7 @@ div.navigation a:hover {
 
 .login form {
     grid-template-columns: 1fr 3fr;
-    grid-gap: 2rem;
+    grid-gap: 3rem;
     justify-content: flex-end;
 }
 
@@ -131,6 +139,7 @@ div.navigation a:hover {
     justify-items: center;
     justify-content: space-evenly;
     align-items: flex-start;
+    flex-wrap: wrap;
 }
 
 .company h1:hover {
@@ -215,9 +224,22 @@ button a {
     background-color: #2E0249;
 }
 
+.page-wrap {
+    min-height: 100%;
+    margin-bottom: -60px;
+    overflow-x: scroll;
+}
+
+.page-wrap:after {
+    height: 60px;
+    content: "";
+    display: block;
+}
+
+
 footer {
-    position: absolute;
-    top: calc(100vh - 92px);
+    height: 60px;
+    bottom: 0%;
     width: 100%;
     margin-top: 2rem;
     background-color: #571581;
@@ -252,4 +274,60 @@ footer p a:hover {
 
 .disclaimer {
     display: none !important;
+}
+
+@media screen and (max-width:992px) {
+    div.header {
+        width: 100%;
+        margin: 0%;
+        border-radius: 0%;
+        padding: 5px;
+    }
+
+    div.form {
+        width: 50%;
+    }
+}
+
+
+@media screen and (max-width:576px) {
+
+    .head_admin .company,
+    .head_admin .navigation {
+        margin-left: 5px;
+    }
+
+    div.form {
+        width: 70%;
+    }
+
+    div form {
+        grid-template-columns: 1fr 2fr;
+    }
+
+    h1 {
+        margin: 2% 0%;
+    }
+
+    .header img {
+        margin-right: 0.5rem;
+    }
+
+    div.head_admin {
+        height: fit-content;
+    }
+
+    .nav-items {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .company img {
+        height: 30;
+        width: 120px;
+    }
+
+    footer {
+        height: 90px;
+    }
 }

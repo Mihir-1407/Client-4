@@ -4,7 +4,7 @@
     $curr_time = date('H:i:s');
 
 ?>
-
+<div class="page-wrap">
 <div>
 <div class="dispstu"><br><br>
     <h2>Scheduled Lectures</h2><br>
@@ -83,7 +83,7 @@
         </tbody>
         
     </table>
-
+</div>
 
     <?php
         include '../footer.php';

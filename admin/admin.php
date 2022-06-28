@@ -105,7 +105,7 @@
     
 
 ?>
-
+<div class="page-wrap">
 <section class="adminhome">
     <div class="addnew">
         <div class="new_student">
@@ -170,6 +170,7 @@
         </div>
     </div>    
 </section>
+</div>
 
 
 <?php include '../footer.php';?>

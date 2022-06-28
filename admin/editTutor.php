@@ -14,6 +14,8 @@
     if(count($result) > 0){
         
 ?>
+
+<div class="page-wrap">
 <div class="form">
     <h2>Edit Tutor Info</h2>
     <form action="<?php $_SERVER['PHP_SELF']?>" class="a_form" method="post">
@@ -61,8 +63,10 @@
         }
 
     ?>
-
 </div>
+</div>
+
+
 <?php
     }
     include '../footer.php';

@@ -7,6 +7,7 @@
 <br>
 <br>
 
+<div class="page-wrap">
 <div>
 
     <h2>Lectures Conducted</h2><br>
@@ -182,6 +183,8 @@
         
     </table>
 
+
+</div>
 
 </div>
 

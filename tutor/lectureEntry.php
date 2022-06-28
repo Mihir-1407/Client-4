@@ -124,7 +124,7 @@
     
 
 ?>
-
+<div class="page-wrap">
 <section>
     <div class="form">
         <form action="<?php $_SERVER['PHP_SELF']?>" class="a_form" method="post" autocomplete="off">
@@ -201,6 +201,7 @@
         ?>  
     </div>
 </section>
+</div>
 
 
 <?php

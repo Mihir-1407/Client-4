@@ -115,7 +115,8 @@
             }
         </style>    
     </head>    
-<body>   
+<body>  
+<div class="page-wrap"> 
     <div>
         <h1>Thank You for choosing AnyDay Tutors!</h1><h3 style="text-align: center;">Please click the Payment link below for the payment. Also, you can fill up the Feedback form below to help us get better.</h3>    
         <form action="<?php $_SERVER['PHP_SELF']?>" method="post">    
@@ -257,6 +258,8 @@
             </div>
             </div>     
         </form>    
-    </div>    
+    </div> 
+    <?php include 'footer.php'?>
+</div>
 </body>    
 </html>    

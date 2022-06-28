@@ -13,78 +13,75 @@
         $sqlS -> close();
     }
 ?>
-<div>
-    <div class="dispstu">
-        <h2>Students Record</h2><br>
+<div class="page-wrap">
+    <div>
+        <div class="dispstu">
+            <h2>Students Record</h2><br>
 
-    
-        <table style="width:100%; text-align:center;">
+        
+            <table style="width:100%; text-align:center;">
 
-            <thead>
-
-            <?php
-
-                $sqlS = $conn -> prepare("SELECT * FROM student");
-                $sqlS -> execute();
-                $result = $sqlS -> get_result();
-
-                if(mysqli_num_rows($result) > 0){
-
-            ?>
-
-            <th><h3>Student ID</h3></th>
-
-            <th><h3>Student Name</h3></th>
-
-            <th><h3>Student Email</h3></th>
-
-            <th><h3>Action</h3></th>
-
-            </thead>
-
-            <tbody>
+                <thead>
 
                 <?php
 
-                    while($row = $result -> fetch_assoc()){
+                    $sqlS = $conn -> prepare("SELECT * FROM student");
+                    $sqlS -> execute();
+                    $result = $sqlS -> get_result();
+
+                    if(mysqli_num_rows($result) > 0){
 
                 ?>
 
-                <tr>
+                <th><h3>Student ID</h3></th>
 
-                    <td><?php echo "STU" . $row['stu_id']; ?> </td> 
+                <th><h3>Student Name</h3></th>
 
-                    <td><?php echo $row['stu_name']; ?> </td> 
+                <th><h3>Student Email</h3></th>
 
-                    <td><?php echo $row['stu_email']; ?> </td> 
+                <th><h3>Action</h3></th>
 
-                    <td>
-                        <button><a href="editStudent.php?id=<?php echo "STU" . $row['stu_id']?>">Update</a></button>&nbsp;&nbsp;&nbsp;
-                        <button name="<?php $row['stu_id'] ?>"><a href="<?php $_SERVER['PHP_SELF']?>?id=<?php echo "STU" .  $row['stu_id']?>">Delete</a></button>
-                    </td>
+                </thead>
 
-                </tr>
+                <tbody>
 
-                <?php 
-                    }
-                }else{
-                    echo "<h1>No Records</h1>";
-                } 
-                ?>
+                    <?php
 
-            </tbody>
-            
-        </table>
+                        while($row = $result -> fetch_assoc()){
 
+                    ?>
+
+                    <tr>
+
+                        <td><?php echo "STU" . $row['stu_id']; ?> </td> 
+
+                        <td><?php echo $row['stu_name']; ?> </td> 
+
+                        <td><?php echo $row['stu_email']; ?> </td> 
+
+                        <td>
+                            <button><a href="editStudent.php?id=<?php echo "STU" . $row['stu_id']?>">Update</a></button>&nbsp;&nbsp;&nbsp;
+                            <button name="<?php $row['stu_id'] ?>"><a href="<?php $_SERVER['PHP_SELF']?>?id=<?php echo "STU" .  $row['stu_id']?>">Delete</a></button>
+                        </td>
+
+                    </tr>
+
+                    <?php 
+                        }
+                    }else{
+                        echo "<h1>No Records</h1>";
+                    } 
+                    ?>
+
+                </tbody>
+                
+            </table>
+
+        </div>
     </div>
+</div>
 
     <?php
         include "../footer.php";
     ?>
 
-    <?php 
-    
-    ?>
-
-    </div>
-</div>
