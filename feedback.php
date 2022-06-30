@@ -142,7 +142,10 @@
                 </div> 
                 <!-- define lecture cost hour wise -->
                 <?php
-                    if(isset($_POST['lec_id']) && isset($_POST['payment'])){
+                    if(isset($_POST['payment'])){
+                        header('Location: charge.php?id=' . $lecture);
+                    }
+                    else if((isset($_POST['lec_id']) && isset($_POST['lecture'])) || (isset($_GET['id1']) && isset($_GET['id2'])) ){
                             ?>
 
                             <?php
@@ -153,56 +156,20 @@
 
                                 if(count($result) == 0){
                                     echo "<script>alert('Enter valid Lecture ID')</script>";
-                                    die("<h1>Invalid Lecture ID</h1>");
-                                }
-                                // per hour class price set to $10 for testing
-                                $price = $result[0]['duration'] ;
-                                $Lecture = $result[0]['lec_id'];
-                                $Duration = $result[0]['duration'];
-                                if($result[0]['payment'] == 1){
-                                    echo "Payment Done";
                                 }else{
-
-                                ?>
-                                    <br>
-                                    <br>
-                                    <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
-                                    <div id="paypal-button-container" style="text-align: center;"></div>
-                                    <script>
-                                    paypal.Buttons({
-                                        createOrder: (data, actions) => {
-                                        return actions.order.create({
-                                            purchase_units: [{
-                                            amount: {
-                                                value: '<?php echo $price; ?>' 
-                                            }
-                                            }]
-                                        });
-                                        },
-                                        onApprove: (data, actions) => {
-                                        return actions.order.capture().then(function(orderData) {
-                                            console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-                                            const transaction = orderData.purchase_units[0].payments.captures[0];
-                                            alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
-                                        
-                                            <?php
-                                                $sql = $conn -> prepare("Update lecture_entry SET payment = 1 WHERE lec_id = ?");
-                                                $sql -> bind_param("s", $lec_id);
-                                                $sql -> execute();
-                                                $sql -> close();
-
-                                            ?>
-
-
-                                        });
-                                    }
-                                }).render('#paypal-button-container');
-                                </script>
-                        <?php
-                        }
-                    }else{
-                        ?>
-                        <input type="submit" value="Payment" name="payment">    
+                                    // per hour class price set to $10 for testing
+                                    $price = $result[0]['duration'] * 10;
+                                    $Lecture = $result[0]['lec_id'];
+                                    $Duration = $result[0]['duration'];
+                                    if($result[0]['payment'] == 1){
+                                        echo "Payment Done";
+                                    }else{ ?>
+                                        <input type="submit" value="Payment" name="payment">    
+                                    <?php }
+                                }
+                                }else{
+                            ?>
+                        <input type="submit" value="Submit" name="lecture">    
                     <?php
                     }
                 ?>  

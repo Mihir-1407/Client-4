@@ -98,8 +98,8 @@
                                         <th>Duration : </th><td>' . $resultL[0]['duration'] . ' Hour</td> 
                                     </tr>
                                 </table> 
-                                <button><a href="https://online-teaching-platform.000webhostapp.com/feedback.php?id1=TUT' . $resultL[0]['tutor_id'] . '&id2='. $resultL[0]['lec_id'] .'">FeedBack Link</a></button>
-                            </body> 
+                                <button><a href="https://anydaytutors.com/feedback.php?id1=TUT' . $resultL[0]['tutor_id'] . '&id2='. $resultL[0]['lec_id'] .'">FeedBack Link</a></button>
+                        </body> 
                         </html>';
             }
 
