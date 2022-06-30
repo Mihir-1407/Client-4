@@ -143,7 +143,7 @@
                 <!-- define lecture cost hour wise -->
                 <?php
                     if(isset($_POST['payment'])){
-                        header('Location: charge.php?id=' . $lecture);
+                        header('Location: https://anydaytutors.com/charge.php?id=' . $lecture);
                     }
                     else if((isset($_POST['lec_id']) && isset($_POST['lecture'])) || (isset($_GET['id1']) && isset($_GET['id2'])) ){
                             ?>
