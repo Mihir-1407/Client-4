@@ -65,7 +65,7 @@
 
                 <?php
                     // echo $curr_time . "  " . $row['etime']; 
-                    if($row['etime'] < $curr_time && $row['sdate'] == $curr_date){
+                    if(($row['etime'] < $curr_time && $row['sdate'] == $curr_date) || $row['sdate'] < $curr_date){
                         echo '<td><a href="lectureEntry.php?id=' . $row["lec_id"] . '"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVnFhpbg03-VX8S1QQOrZ1n7WtNhp7f4S8qWZgamtaXLCZJ6w6dsMCUzDZ-t07HDMr1Mw&usqp=CAU" style="width: 20px; height: 20px;" /></a></td>';
                     }else{
                         echo '<td><a aria-disabled="true"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVnFhpbg03-VX8S1QQOrZ1n7WtNhp7f4S8qWZgamtaXLCZJ6w6dsMCUzDZ-t07HDMr1Mw&usqp=CAU" style="width: 20px; height: 20px;" /></a></a></td>';
