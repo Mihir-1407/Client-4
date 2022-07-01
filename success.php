@@ -45,7 +45,7 @@
             
             echo '<script>alert("Transaction Succesfull")</script>';
             echo '<form action="feedback.php">
-                <button type="submit" formaction="feedback.php?id1=""&id2=' . $lec_id .'">Back to Feedback Page</button>
+                <button type="submit" formaction="feedback.php">Back to Feedback Page</button>
             </form>';
         }else{
             echo "<script>alert('Payment Unsuccessful')</script>";
