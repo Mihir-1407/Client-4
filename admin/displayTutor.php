@@ -36,17 +36,17 @@
 
                 ?>
 
-                <th><h3>Tutor ID</h3></th>
+                <th><h3>ID</h3></th>
 
-                <th><h3>Tutor Name</h3></th>
+                <th><h3>Name</h3></th>
 
-                <th><h3>Tutor Email</h3></th>
+                <th><h3>Email</h3></th>
 
-                <th><h3>Contact No.</h3></th>
+                <th><h3>Mobile</h3></th>
 
                 <th><h3>Subject</h3></th>
 
-                <th><h3>Action</h3></th>
+                <th><h3></h3></th>
 
             </thead>
 

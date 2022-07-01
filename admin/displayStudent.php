@@ -33,13 +33,13 @@
 
                 ?>
 
-                <th><h3>Student ID</h3></th>
+                <th><h3>ID</h3></th>
 
-                <th><h3>Student Name</h3></th>
+                <th><h3>Name</h3></th>
 
-                <th><h3>Student Email</h3></th>
+                <th><h3>Email</h3></th>
 
-                <th><h3>Action</h3></th>
+                <th><h3></h3></th>
 
                 </thead>
 
