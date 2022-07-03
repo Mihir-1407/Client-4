@@ -48,6 +48,8 @@
 
                 <th><h3></h3></th>
 
+                <th><h3></h3></th>
+
             </thead>
 
             <tbody>
@@ -72,9 +74,11 @@
 
                     <td>
                         <button><a href="editTutor.php?id=<?php echo "TUT" . $row['tutor_id']?>">Update</a></button>&nbsp;&nbsp;&nbsp;
-                        <button name="<?php $row['tutor_id'] ?>"><a href="<?php $_SERVER['PHP_SELF']?>?id=<?php echo "TUT" . $row['tutor_id']?>">Delete</a></button>
                     </td>
 
+                    <td>
+                    <button name="<?php $row['tutor_id'] ?>"><a href="<?php $_SERVER['PHP_SELF']?>?id=<?php echo "TUT" . $row['tutor_id']?>">Delete</a></button>
+                    </td>
                 </tr>
 
                 

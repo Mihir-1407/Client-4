@@ -125,7 +125,7 @@
             ?>
                 <label for="Std_id">Student ID</label>
                 <input type="text" name="stuID" id="stuID" placeholder="" value="<?php echo $stu_id?>" readonly>
-                <label for="Std_Name">Student Name</label>
+                <label for="Std_Name">Name</label>
                 <input type="text" name="stuName" id="stuName" placeholder="" required>
                 <label for="Std_Email">Email</label>
                 <input type="email" name="stuEmail" id="stuEmail" placeholder="" required>

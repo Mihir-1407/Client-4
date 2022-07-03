@@ -24,10 +24,8 @@ include '../config.php';
     <header>
         <div class="head_admin">
             <div class="company">
-                <h1>
-                <?php echo $company_logo?>
-                <?php echo $company_name?>
-                </h1>
+                <h1><?php echo $company_logo?>
+                <?php echo $company_name?></h1>
             </div>
             <div class="navigation">
                 <?php

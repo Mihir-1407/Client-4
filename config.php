@@ -12,17 +12,17 @@ define('PAYPAL_CANCEL_URL', 'https://anydaytutors.com/cancel.php');
         $gateway->setSecret(CLIENT_SECRET);
         $gateway->setTestMode(true);
         date_default_timezone_set('Asia/Kolkata');
-        // $servername = "remotemysql.com";
-        // $db_name = "JzWIM9HHVR";
-        // $dsn = "mysql: dbname=$db_name; host=$servername";
-        // $username = "JzWIM9HHVR";
-        // $password = "zD4p8P8bsa";
-
-        $servername = "localhost";
-        $db_name = "u285368853_client4";
+        $servername = "remotemysql.com";
+        $db_name = "JzWIM9HHVR";
         $dsn = "mysql: dbname=$db_name; host=$servername";
-        $username = "u285368853_anydaytutors";
-        $password = "Anydaytutors@client4";
+        $username = "JzWIM9HHVR";
+        $password = "zD4p8P8bsa";
+
+        // $servername = "localhost";
+        // $db_name = "u285368853_client4";
+        // $dsn = "mysql: dbname=$db_name; host=$servername";
+        // $username = "u285368853_anydaytutors";
+        // $password = "Anydaytutors@client4";
         $conn = new mysqli($servername, $username, $password, $db_name);
     }
     catch(Exception $e){

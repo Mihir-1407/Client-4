@@ -34,7 +34,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        
         <title>AnyDay Tutors - Payment</title>
         <style>    
             * {    
@@ -68,7 +68,42 @@
                 padding: 12px 12px 12px 0;    
                 display: inline-block;    
             }    
-                
+               
+            footer {
+                height: 60px;
+                bottom: 0%;
+                width: 100%;
+                margin-top: 2rem;
+                background-color: #571581;
+                padding: 0.4rem 0;
+                text-align: center;
+            }
+
+            footer p {
+                color: white;
+            }
+
+            footer a {
+                display: inline-block;
+                font-weight: 700;
+                color: black;
+                background-color: white;
+                padding: 3px;
+                width: fit-content;
+                border-radius: 5px;
+            }
+
+            footer p a:hover {
+                color: #42caff;
+                font-weight: 800;
+            }
+
+            .logo-bottom {
+                height: 30px;
+                width: 30px;
+                vertical-align: middle;
+            }
+
             input[type=submit] {    
                 background-color: rgb(37, 116, 161);    
                 color: white;    

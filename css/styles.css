@@ -166,7 +166,14 @@ h4 {
     color: red;
 }
 
+table, td, th{
+    border-width: 1px;
+    border: 1.5px solid black;
+}
 
+table{
+    border-collapse: collapse;
+}
 table button {
     padding: 3px;
     background-color: #571581;
